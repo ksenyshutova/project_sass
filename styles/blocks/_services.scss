@@ -1,9 +1,7 @@
 @import "../variables";
 
 .services {
-    @include mobile {
         overflow: hidden;
-    }
 
     &__title {
         font-size: 24px;
