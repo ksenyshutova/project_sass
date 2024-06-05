@@ -1,0 +1,40 @@
+@mixin media-desktop {
+    content: '';
+    display: block;
+    width: 104%;
+    height: 100%;
+    position: absolute;
+    top: 27%;
+    right: 6%;
+    background-image: url(../images/arrow.svg);
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+@mixin media-large {
+    content: '';
+    display: block;
+    width: 30%;
+    height: 30%;
+    position: absolute;
+    top: 104%;
+    left: 84%;
+    background-image: url(../images/arrow.svg);
+    background-repeat: no-repeat;
+    z-index: 1;
+    transform: scale(1, -1) rotate(268deg);
+}
+
+@mixin media-small {
+    content: '';
+    display: block;
+    width: 40%;
+    height: 40%;
+    position: absolute;
+    top: 90%;
+    left: 90%;
+    background-image: url(../images/arrow.svg);
+    background-repeat: no-repeat;
+    z-index: 1;
+    transform: scale(1, -1) rotate(268deg);
+}

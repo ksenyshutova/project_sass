@@ -1,0 +1,40 @@
+ @import "../variables";
+
+ .button {
+     display: flex;
+     justify-content: space-around;
+     align-items: center;
+     font-size: 16px;
+     margin-top: 64px;
+     margin-left: 62%;
+     color: $color-light;
+     width: 220px;
+     min-height: $button-height;
+     box-sizing: border-box;
+     border: $border-default;
+     border-radius: 16px;
+     box-shadow: 0 4px 8px 0 rgba(61, 147, 0, 0.48), 0 0 0 4px rgba(91, 192, 20, 0.24);
+     background: linear-gradient(169deg, rgb(93, 196, 22), rgb(54, 123, 5) 100%);
+     cursor: pointer;
+
+     &:hover {
+         cursor: pointer;
+         border: $border-hover;
+     }
+
+     &:active {
+         cursor: pointer;
+         border: $border-active;
+     }
+
+     &__text {
+         font-size: 16px;
+         font-weight: 400;
+     }
+
+     @include mobile {
+         width: 100%;
+         max-width: 220px;
+         margin-inline: auto;
+     }
+ }

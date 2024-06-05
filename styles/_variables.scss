@@ -1,0 +1,28 @@
+    $color-dark: rgb(34, 40, 74);
+    $color-light: rgb(255, 255, 255);
+    $color-accent: rgba(149, 255, 75, 0.64);
+    $color-border: rgba(255, 255, 255, 0.32);
+    $color-blue: rgb(41, 32, 165);
+    $color-blue-light: rgb(99, 119, 225);
+    $color-violet: rgb(116, 21, 149);
+    $color-violet-light: rgb(225, 99, 225);
+    $color-green: rgb(1, 77, 29);
+    $color-green-light: rgb(85, 206, 0);
+
+    $border: 2px solid transparent; // текст
+    $border-default: 3px solid $color-accent; // кнопка
+    $border-hover: 4px solid $color-accent;
+    $border-active: 2px solid rgba(149, 255, 75, 0.48);
+    $border-radius: 20px;
+    $border-radius-small: 16px;
+
+    $font-family-base: 'Roboto', sans-serif;
+
+    $container-width: 1281px;
+    $container-padding-x: 12px;
+
+    $section-padding-y: 35px;
+
+    $button-height: 48px;
+
+    $transition-duration: 0.2s;

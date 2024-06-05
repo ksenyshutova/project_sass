@@ -1,0 +1,147 @@
+@import "../variables";
+
+.service-card {
+    border-radius: $border-radius;
+    font-size: 20px;
+    position: relative;
+    min-height: 352px;
+    padding: 2px;
+
+    &:hover {
+        padding: 6px;
+        transition-duration: $transition-duration;
+        cursor: pointer;
+    }
+
+    &__title {
+        font-size: 20px;
+        align-content: center;
+        padding-top: 20px;
+        padding-left: 4px;
+
+        @include mobile {
+            padding-top: 24px;
+            padding-left: 0;
+        }
+    }
+
+    &--dark-bg {
+        background:
+            linear-gradient($color-blue-light, $color-blue) content-box, // фон 
+            linear-gradient(45deg, rgb(71, 95, 223), $color-border) border-box; // рамка
+
+        @media (min-width: 550px) and (max-width: 767px) {
+            &::after {
+                @include media-large;
+            }
+        }
+
+        @media (max-width: 549px) {
+            &::after {
+                @include media-small;
+            }
+        }
+    }
+
+    &--medium-bg {
+        background:
+            linear-gradient($color-violet-light, $color-violet) content-box,
+            linear-gradient(45deg, rgb(178, 71, 223), $color-border) border-box;
+
+        &::after {
+            @include media-desktop;
+        }
+
+        @media (min-width: 550px) and (max-width: 767px) {
+            &::after {
+                @include media-large;
+            }
+        }
+
+        @media (max-width: 549px) {
+            &::after {
+                @include media-small;
+            }
+        }
+    }
+
+    &--light-bg {
+        background:
+            linear-gradient($color-green-light, $color-green) content-box,
+            linear-gradient(45deg, rgb(58, 130, 7), $color-border) border-box;
+
+        &::after {
+            @include media-desktop;
+        }
+
+        &::after {
+            @include mobile {
+                display: none;
+            }
+        }
+    }
+
+    &__image {
+        position: absolute;
+        margin-top: 31%;
+        margin-left: 5%;
+        align-self: center;
+
+        @include tablet {
+            margin-top: 30%;
+        }
+
+        @media (min-width: 451px) and (max-width: 767px) {
+            margin-top: 10% !important;
+            margin-left: 20% !important;
+            width: 100% !important;
+            max-width: 300px !important;
+            height: auto !important;
+        }
+
+        @media (min-width: 301px) and (max-width: 450px) {
+            margin-top: 26%;
+            width: 95%;
+            height: auto;
+        }
+
+        @media (max-width: 300px) {
+            margin-top: 48%;
+            width: 90%;
+            height: auto;
+        }
+
+        &--dark {
+            margin-top: 35%;
+            margin-left: 15%;
+
+            @include mobile {
+                margin-top: 48%;
+                margin-left: 5%;
+            }
+        }
+
+        &--medium {
+            margin-top: 27%;
+            margin-left: 5%;
+
+            @include mobile {
+                width: 100%;
+                min-width: 366px;
+                height: auto;
+                margin-top: 39%;
+                margin-left: -10%;
+            }
+        }
+
+        &--light {
+            @include mobile {
+                width: 100%;
+                min-width: 400px;
+                height: auto;
+                margin-top: 46%;
+                margin-left: -15%;
+            }
+        }
+    }
+}

@@ -1,0 +1,482 @@
+@charset "UTF-8";
+/**
+  Нормализация блочной модели
+ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/**
+   Убираем внутренние отступы слева тегам списков,
+   у которых есть атрибут class
+  */
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+   Убираем внешние отступы body и двум другим тегам,
+   у которых есть атрибут class
+  */
+body,
+:where(blockquote, figure):where([class]) {
+  margin: 0;
+}
+
+/**
+   Убираем внешние отступы вертикали нужным тегам,
+   у которых есть атрибут class
+  */
+:where(h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+dl):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  margin-left: 0;
+  padding: 0;
+  border: none;
+}
+
+/**
+   Убираем стандартный маркер маркированному списку,
+   у которого есть атрибут class
+  */
+:where(ul[class]) {
+  list-style: none;
+}
+
+/**
+   Обнуляем вертикальные внешние отступы параграфа,
+   объявляем локальную переменную для внешнего отступа вниз,
+   чтобы избежать взаимодействие с более сложным селектором
+  */
+p {
+  --paragraphMarginBottom: 24px;
+  margin-block: 0;
+}
+
+/**
+   Внешний отступ вниз для параграфа без атрибута class,
+   который расположен не последним среди своих соседних элементов
+  */
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+/**
+   Упрощаем работу с изображениями
+  */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/**
+   Наследуем свойства шрифт для полей ввода
+  */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+  /**
+     Пригодится в большинстве ситуаций
+     (когда, например, нужно будет "прижать" футер к низу сайта)
+    */
+  height: 100%;
+}
+
+/**
+   Плавный скролл
+  */
+html,
+:has(:target) {
+  scroll-behavior: smooth;
+}
+
+body {
+  /**
+     Пригодится в большинстве ситуаций
+     (когда, например, нужно будет "прижать" футер к низу сайта)
+    */
+  min-height: 100%;
+  /**
+     Унифицированный интерлиньяж
+    */
+  line-height: 1.5;
+}
+
+/**
+   Приводим к единому цвету svg-элементы
+  */
+svg *[fill] {
+  fill: currentColor;
+}
+
+svg *[stroke] {
+  stroke: currentColor;
+}
+
+/**
+   Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+  */
+svg * {
+  transition-property: fill, stroke;
+}
+
+/**
+   Удаляем все анимации и переходы для людей,
+   которые предпочитают их не использовать
+  */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/Roboto-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/Roboto-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+.container {
+  max-width: 1305px;
+  margin-inline: auto;
+  padding-inline: 12px;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+  color: rgb(255, 255, 255);
+}
+
+a,
+button,
+input,
+textarea,
+svg * {
+  transition-duration: 0.2s;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+@media (max-width: 767px) {
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.button {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 16px;
+  margin-top: 64px;
+  margin-left: 62%;
+  color: rgb(255, 255, 255);
+  width: 220px;
+  min-height: 48px;
+  box-sizing: border-box;
+  border: 3px solid rgba(149, 255, 75, 0.64);
+  border-radius: 16px;
+  box-shadow: 0 4px 8px 0 rgba(61, 147, 0, 0.48), 0 0 0 4px rgba(91, 192, 20, 0.24);
+  background: linear-gradient(169deg, rgb(93, 196, 22), rgb(54, 123, 5) 100%);
+  cursor: pointer;
+}
+.button:hover {
+  cursor: pointer;
+  border: 4px solid rgba(149, 255, 75, 0.64);
+}
+.button:active {
+  cursor: pointer;
+  border: 2px solid rgba(149, 255, 75, 0.48);
+}
+.button__text {
+  font-size: 16px;
+  font-weight: 400;
+}
+@media (max-width: 767px) {
+  .button {
+    width: 100%;
+    max-width: 220px;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .services {
+    overflow: hidden;
+  }
+}
+.services__title {
+  font-size: 24px;
+  color: rgb(34, 40, 74);
+  margin-top: 41px;
+  margin-left: 31px;
+  margin-bottom: 33px;
+}
+@media (max-width: 767px) {
+  .services__title {
+    margin-top: 33px;
+    margin-left: 0;
+  }
+}
+.services__list {
+  counter-reset: count 0;
+  background: linear-gradient(180deg, rgba(107, 125, 222, 0.12), rgb(41, 33, 165) 100%) content-box, linear-gradient(0deg, rgb(41, 33, 165), rgba(107, 125, 222, 0.44) 100%) border-box;
+  border: 4px solid transparent;
+  border-radius: 24px;
+  box-shadow: 0 24px 48px 0 rgba(23, 43, 151, 0.72);
+}
+.services__item {
+  display: flex;
+  align-items: start;
+}
+.services__item::before {
+  content: counter(count);
+  counter-increment: count 1;
+  display: inline-block;
+  text-align: center;
+  border-radius: 50%;
+  padding: 0.5em 0.8em;
+  list-style: none;
+  margin: 22px;
+}
+.services__item--dark::before {
+  background: linear-gradient(180deg, rgb(41, 32, 165), rgb(99, 119, 225) 100%);
+}
+.services__item--medium::before {
+  background: linear-gradient(180deg, rgb(116, 21, 149), rgb(225, 99, 225) 100%);
+}
+.services__item--light::before {
+  background: linear-gradient(180deg, rgb(1, 77, 29), rgb(85, 206, 0) 100%);
+}
+
+.service-card {
+  border-radius: 20px;
+  font-size: 20px;
+  position: relative;
+  min-height: 352px;
+  padding: 2px;
+}
+.service-card:hover {
+  padding: 6px;
+  transition-duration: 0.2s;
+  cursor: pointer;
+}
+.service-card__title {
+  font-size: 20px;
+  align-content: center;
+  padding-top: 20px;
+  padding-left: 4px;
+}
+@media (max-width: 767px) {
+  .service-card__title {
+    padding-top: 24px;
+    padding-left: 0;
+  }
+}
+.service-card--dark-bg {
+  background: linear-gradient(rgb(99, 119, 225), rgb(41, 32, 165)) content-box, linear-gradient(45deg, rgb(71, 95, 223), rgba(255, 255, 255, 0.32)) border-box;
+}
+@media (min-width: 550px) and (max-width: 767px) {
+  .service-card--dark-bg::after {
+    content: "";
+    display: block;
+    width: 30%;
+    height: 30%;
+    position: absolute;
+    top: 104%;
+    left: 84%;
+    background-image: url(../images/arrow.svg);
+    background-repeat: no-repeat;
+    z-index: 1;
+    transform: scale(1, -1) rotate(268deg);
+  }
+}
+@media (max-width: 549px) {
+  .service-card--dark-bg::after {
+    content: "";
+    display: block;
+    width: 40%;
+    height: 40%;
+    position: absolute;
+    top: 90%;
+    left: 90%;
+    background-image: url(../images/arrow.svg);
+    background-repeat: no-repeat;
+    z-index: 1;
+    transform: scale(1, -1) rotate(268deg);
+  }
+}
+.service-card--medium-bg {
+  background: linear-gradient(rgb(225, 99, 225), rgb(116, 21, 149)) content-box, linear-gradient(45deg, rgb(178, 71, 223), rgba(255, 255, 255, 0.32)) border-box;
+}
+.service-card--medium-bg::after {
+  content: "";
+  display: block;
+  width: 104%;
+  height: 100%;
+  position: absolute;
+  top: 27%;
+  right: 6%;
+  background-image: url(../images/arrow.svg);
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+@media (min-width: 550px) and (max-width: 767px) {
+  .service-card--medium-bg::after {
+    content: "";
+    display: block;
+    width: 30%;
+    height: 30%;
+    position: absolute;
+    top: 104%;
+    left: 84%;
+    background-image: url(../images/arrow.svg);
+    background-repeat: no-repeat;
+    z-index: 1;
+    transform: scale(1, -1) rotate(268deg);
+  }
+}
+@media (max-width: 549px) {
+  .service-card--medium-bg::after {
+    content: "";
+    display: block;
+    width: 40%;
+    height: 40%;
+    position: absolute;
+    top: 90%;
+    left: 90%;
+    background-image: url(../images/arrow.svg);
+    background-repeat: no-repeat;
+    z-index: 1;
+    transform: scale(1, -1) rotate(268deg);
+  }
+}
+.service-card--light-bg {
+  background: linear-gradient(rgb(85, 206, 0), rgb(1, 77, 29)) content-box, linear-gradient(45deg, rgb(58, 130, 7), rgba(255, 255, 255, 0.32)) border-box;
+}
+.service-card--light-bg::after {
+  content: "";
+  display: block;
+  width: 104%;
+  height: 100%;
+  position: absolute;
+  top: 27%;
+  right: 6%;
+  background-image: url(../images/arrow.svg);
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+@media (max-width: 767px) {
+  .service-card--light-bg::after {
+    display: none;
+  }
+}
+.service-card__image {
+  position: absolute;
+  margin-top: 31%;
+  margin-left: 5%;
+  align-self: center;
+}
+@media (max-width: 1023px) {
+  .service-card__image {
+    margin-top: 30%;
+  }
+}
+@media (min-width: 451px) and (max-width: 767px) {
+  .service-card__image {
+    margin-top: 10% !important;
+    margin-left: 20% !important;
+    width: 100% !important;
+    max-width: 300px !important;
+    height: auto !important;
+  }
+}
+@media (min-width: 301px) and (max-width: 450px) {
+  .service-card__image {
+    margin-top: 26%;
+    width: 95%;
+    height: auto;
+  }
+}
+@media (max-width: 300px) {
+  .service-card__image {
+    margin-top: 48%;
+    width: 90%;
+    height: auto;
+  }
+}
+.service-card__image--dark {
+  margin-top: 35%;
+  margin-left: 15%;
+}
+@media (max-width: 767px) {
+  .service-card__image--dark {
+    margin-top: 48%;
+    margin-left: 5%;
+  }
+}
+.service-card__image--medium {
+  margin-top: 27%;
+  margin-left: 5%;
+}
+@media (max-width: 767px) {
+  .service-card__image--medium {
+    width: 100%;
+    min-width: 366px;
+    height: auto;
+    margin-top: 39%;
+    margin-left: -10%;
+  }
+}
+@media (max-width: 767px) {
+  .service-card__image--light {
+    width: 100%;
+    min-width: 400px;
+    height: auto;
+    margin-top: 46%;
+    margin-left: -15%;
+  }
+}/*# sourceMappingURL=styles.css.map */
