@@ -249,7 +249,7 @@ a {
 .services__title {
   font-size: 24px;
   color: rgb(34, 40, 74);
-  margin-top: 41px;
+  margin-top: 36px;
   margin-left: 31px;
   margin-bottom: 33px;
 }
@@ -276,9 +276,16 @@ a {
   display: inline-block;
   text-align: center;
   border-radius: 50%;
-  padding: 0.5em 0.8em;
+  padding: 0.65em 0.9em;
   list-style: none;
-  margin: 22px;
+  margin-top: 18px;
+  margin-left: 28px;
+}
+@media (max-width: 767px) {
+  .services__item::before {
+    margin-top: 20px;
+    margin-left: 19px;
+  }
 }
 .services__item--dark::before {
   background: linear-gradient(180deg, rgb(41, 32, 165), rgb(99, 119, 225) 100%);
@@ -306,12 +313,12 @@ a {
   font-size: 20px;
   align-content: center;
   padding-top: 20px;
-  padding-left: 4px;
+  padding-left: 15px;
 }
 @media (max-width: 767px) {
   .service-card__title {
     padding-top: 24px;
-    padding-left: 0;
+    padding-left: 16px;
   }
 }
 .service-card--dark-bg {

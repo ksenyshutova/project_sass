@@ -1,12 +1,12 @@
 @import "../variables";
 
 .services {
-        overflow: hidden;
+    overflow: hidden;
 
     &__title {
         font-size: 24px;
         color: $color-dark;
-        margin-top: 41px;
+        margin-top: 36px;
         margin-left: 31px;
         margin-bottom: 33px;
 
@@ -36,9 +36,15 @@
             display: inline-block;
             text-align: center;
             border-radius: 50%;
-            padding: 0.5em 0.8em;
+            padding: 0.65em 0.9em;
             list-style: none;
-            margin: 22px;
+            margin-top: 18px;
+            margin-left: 28px;
+
+            @include mobile {
+                margin-top: 20px;
+                margin-left: 19px;
+            }
         }
 
         &--dark::before {
